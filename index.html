@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>調剤録まちがい探しクイズ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="card header-card">
+      <div class="badge">サンプル1問・改訂版</div>
+      <h1>🔎 調剤録まちがい探しクイズ</h1>
+      <p class="lead">処方箋と調剤録を見比べて、<strong>調剤録の間違いを2か所</strong>探してください！</p>
+      <p class="note">※同じ氏名の間違いは、上の記載でも下の記載でも正解。両方押しても1か所分です。</p>
+      <div class="status-row">
+        <div class="status-box">見つけた数 <span id="foundCount">0</span> / 2</div>
+        <div class="status-box">残り <span id="remainingCount">2</span> か所</div>
+      </div>
+      <p id="message" class="message" aria-live="polite">調剤録の間違っている箇所をタップしてね😊</p>
+    </section>
+
+    <section class="compare-grid">
+      <section class="card image-card">
+        <h2>処方箋</h2>
+        <div class="image-frame">
+          <img src="prescription.png" alt="比較する処方箋画像">
+        </div>
+      </section>
+
+      <section class="card image-card">
+        <h2>調剤録（間違いは2か所）</h2>
+        <div id="quizBoard" class="image-frame interactive-board" aria-label="調剤録の間違い探しエリア">
+          <img src="dispensing.png" alt="2か所の間違いが含まれる調剤録画像">
+          <!-- 氏名が上下の2か所に出ている。どちらの選択でも同じidで1カウント -->
+          <button type="button" class="hit-area" data-id="name" aria-label="上部の氏名を選ぶ" style="left:3.5%; top:9.25%; width:10.8%; height:2.85%;"></button>
+          <button type="button" class="hit-area" data-id="name" aria-label="下部の氏名を選ぶ" style="left:14.0%; top:68.2%; width:10.2%; height:3.2%;"></button>
+          <!-- 処方日だけを正解にする。すぐ下の調剤日は正しいので対象外 -->
+          <button type="button" class="hit-area" data-id="date" aria-label="上部の処方日を選ぶ" style="left:85.3%; top:4.15%; width:10.5%; height:2.4%;"></button>
+        </div>
+      </section>
+    </section>
+
+    <section id="resultCard" class="card result-card hidden" aria-live="polite">
+      <div class="badge">2か所発見！</div>
+      <h2>おつかれさまでした✨</h2>
+      <p class="result-summary">この問題の間違いは次の2か所でした。</p>
+      <ol class="explanation-list">
+        <li><strong>氏名の表記</strong><br>調剤録は「てすと」ですが、処方箋では<strong>「テスト」</strong>。調剤録の上部にも下部にも同じ誤りがあるので、どちらを見つけても1か所として正解です。</li>
+        <li><strong>処方日</strong><br>調剤録の「08.10.23」は誤り。処方箋の交付年月日は<strong>「08.10.22」</strong>です。調剤日「08.10.23」は今回の間違いではありません。</li>
+      </ol>
+      <p class="footnote">※未収金は「0」に訂正済みで、間違い探しの対象ではありません。</p>
+      <button id="retryButton" class="primary-button" type="button">もう一度する</button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
