@@ -5,7 +5,7 @@ const questions = [
   {
     prescription: "question1_rx.png", record: "question1_record.png",
     spots: [
-      { id: "date", label: "処方日（10.23）", regions: [{x:0.758,y:0.035,w:0.088,h:0.026}], mark:{x:0.803,y:0.048},
+      { id: "date", label: "処方日（10.23）", regions: [{x:0.856,y:0.022,w:0.108,h:0.040},{x:0.874,y:0.026,w:0.086,h:0.032}], mark:{x:0.908,y:0.042},
         explanation: "調剤録の処方日は『08.10.23』ですが、処方箋の交付日は『08.10.22』。<strong>処方日を08.10.22に修正</strong>します。調剤日08.10.23は今回の誤りではありません。" },
       { id: "drug", label: "グリコラン錠250mg", regions: [{x:0.110,y:0.435,w:0.220,h:0.027}], mark:{x:0.215,y:0.450},
         explanation: "処方箋は『メトホルミン塩酸塩錠250mg：MT』。調剤録の『グリコラン錠250mg』（GL）をそのまま使わず、<strong>MTに対応するメトグルコの後発品</strong>を選びます。GLとMTは用法・用量等の承認内容が異なるため、単純に同じ薬として扱いません。" }
